@@ -1,0 +1,114 @@
+<?php
+
+namespace pw\Controllers;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Silex\Application;
+use pw\Services\SessionStorage;
+use pw\Models\Commentaire;
+
+class ItemsController {
+
+    protected $storage;
+
+    public function __construct() {
+        $this->storage = new SessionStorage();
+    }
+
+    public function listAction(Application $app) {
+        $entityManager = $app['em'];
+        $repository = $entityManager->getRepository('DUT\\Models\\Item');
+        $items = $repository->findAll();
+
+        $resultat = array();
+
+        foreach ($items as $key => $value) {
+            array_push($resultat, $value);
+        }
+        
+
+        return new $resultat;
+    }
+
+    public function createAction(Request $request, Application $app) {
+        $title = $request->get('title', null);
+        $url = $app['url_generator']->generate('home');
+
+        if (!is_null($title)) {
+           $item = new Item($title, false);
+           $entityManager = $app['em'];
+           $entityManager->persist($item);
+           $entityManager->flush();
+           return $app->redirect($url);
+        }
+
+        $html = '<h2>Ajouter</h2><form action="create" method="post">';
+        $html .= '<label for="input">Nom</label><input id="input" type="text" name="title">';
+
+        $html .= '<button>Valider</button></form>';
+
+        return new Response($html);
+    }
+
+    public function deleteAction($index, Application $app) {
+        $entityManager = $app['em'];
+
+        $itemToRemove=$entityManager->find("DUT\\Models\\Item",$index);
+        $entityManager->remove($itemToRemove);
+        $entityManager->flush();
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);
+    }
+
+    public function checkAction($index, Application $app){
+        $entityManager = $app['em'];
+
+        $itemToCheck=$entityManager->find("DUT\\Models\\Item",$index);
+        if($itemToCheck->getcoche()){
+            $itemToCheck->setCoche(false);
+        }
+        else $itemToCheck->setCoche(true);
+        $entityManager->persist($itemToCheck);
+        $entityManager->flush();
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);
+    }
+
+    /*public function updateNameAction($index,$title, Application $app){
+        $entityManager = $app['em'];
+
+        $itemToModify=$entityManager->find("DUT\\Models\\Item",$index);
+        $itemToModify->setTitle($title);
+        $entityManager->persist($itemToModify);
+        $entityManager->flush();
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);
+    }*/
+
+    public function updateNameAction(Request $request, Application $app){
+        $title = $request->get('title', null);
+        $id = $request->get('id',null);
+        $url = $app['url_generator']->generate('home');
+
+        if (!is_null($title) && !is_null($id)) {
+           $entityManager = $app['em'];
+           $itemToModify = $entityManager->find("DUT\\Models\\Item",$id);
+           $itemToModify->setTitle($title);         
+           $entityManager->persist($itemToModify);
+           $entityManager->flush();
+           return $app->redirect($url);
+        }
+
+        $html = '<h2>Ajouter</h2><form action="updateName" method="post">';
+        $html .= '<label for="input">Nom</label><input id="input" type="text" name="title">';
+        $html .= '<label for="input">id</label><input id="input" type="text" name="id">';
+
+        $html .= '<button>Valider</button></form>';
+
+        return new Response($html);
+    }
+}
