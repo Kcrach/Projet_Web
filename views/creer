@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Site</title>
+	<link rel="stylesheet" href="{{app.request.basepath}}/style/style.css">
+</head>
+<body>
+	<h1>Ajouter tâche</h1>
+	<form action="create" method="post">
+		<label for="input">Nom</label>
+		<input id="input" type="text" name="name">
+		<button>Valider</button>
+	</form>
+</body>
+</html>

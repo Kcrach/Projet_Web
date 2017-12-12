@@ -31,9 +31,8 @@ class ItemsController
 		$this->storage->removeElement($index);
 	}
 
-}
-
 	public function addFormAction(){
 		
 	}
+}
 ?> 
