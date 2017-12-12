@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use pw\Services\SessionStorage;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
@@ -26,6 +27,8 @@ $app['em'] = function ($app) {
 /**
  * ROUTES
  */
+
+$session = new SessionStorage();
 
 $app->get('/', function() use ($app){
 	return $app['twig']->render('test.twig');
