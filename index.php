@@ -11,17 +11,17 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(),['twig.path' => __DIR__ . '/views',]);
 
 $app['connection'] = [
-    'driver' => 'pdo_mysql',
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => '',
-    'dbname' => 'projet_web'
+	'driver' => 'pdo_mysql',
+	'host' => 'localhost',
+	'user' => 'root',
+	'password' => '',
+	'dbname' => 'projet_web'
 ];
 
 $app['doctrine_config'] = Setup::createYAMLMetadataConfiguration([__DIR__ . '/config'], true);
 
 $app['em'] = function ($app) {
-    return EntityManager::create($app['connection'], $app['doctrine_config']);
+	return EntityManager::create($app['connection'], $app['doctrine_config']);
 };
 
 /**
@@ -31,7 +31,8 @@ $app['em'] = function ($app) {
 $session = new SessionStorage();
 
 $app->get('/', function() use ($app){
-	return $app['twig']->render('test.twig');
+	$session = new SessionStorage();
+	return $app['twig']->render('index.html');
 })->bind('home');
 
 $app['debug'] = true;

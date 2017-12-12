@@ -18,6 +18,10 @@ class ComposerStaticInit1c91b4dda3a3b598048346b7cfa7cee0
     );
 
     public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'pw\\' => 3,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -71,11 +75,14 @@ class ComposerStaticInit1c91b4dda3a3b598048346b7cfa7cee0
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
-            'DUT\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'pw\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -231,10 +238,6 @@ class ComposerStaticInit1c91b4dda3a3b598048346b7cfa7cee0
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
-        ),
-        'DUT\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

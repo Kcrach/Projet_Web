@@ -1,6 +1,6 @@
 <?php
 
-namespace DUT\Services;
+namespace pw\Services;
 
 session_start();
 
