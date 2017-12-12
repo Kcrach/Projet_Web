@@ -4,7 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-use DUT\Controllers\ItemsController;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
@@ -29,8 +28,7 @@ $app['em'] = function ($app) {
  */
 
 $app->get('/', function() use ($app){
-	$ic = new ItemsController();
-	return $app['twig']->render('liste.html',['names' => $ic->listAction($app)]);
+
 })->bind('home');
 
 $app['debug'] = true;
