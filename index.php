@@ -28,7 +28,7 @@ $app['em'] = function ($app) {
  */
 
 $app->get('/', function() use ($app){
-
+	return $app['twig']->render('test.twig');
 })->bind('home');
 
 $app['debug'] = true;
