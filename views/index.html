@@ -10,8 +10,12 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="/">Accueil</a></li>
-			<li><a href="/"></a></li>
+			<li><a href="{{app.request.basepath}}/">Accueil</a></li>
+			{% if connected %}
+				<li><a href="{{app.request.basepath}}/user/">Mon Compte</a></li>
+			{% else %}
+				<li><a href="{{app.request.basepath}}/connexion">Se connecter</a></li>
+			{% endif %}
 		</ul>
 	</nav>
 </body>

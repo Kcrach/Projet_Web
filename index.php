@@ -24,14 +24,23 @@ $app['em'] = function ($app) {
 	return EntityManager::create($app['connection'], $app['doctrine_config']);
 };
 
+$app['session'] = new SessionStorage();
+
+
+
 /**
  * ROUTES
  */
 
 $app->get('/', function() use ($app){
-	$session = new SessionStorage();
-	return $app['twig']->render('index.html');
+	$app['session']->setConnected(false);
+	return $app['twig']->render('index.html', ['connected' => $app['session']->isConnected()]);
 })->bind('home');
+
+$app->get('/connexion', function() use ($app){
+	$app['session']->setConnected(true);
+	return $app['twig']->render('index.html', ['connected' => $app['session']->isConnected()]);
+});
 
 $app['debug'] = true;
 $app->run();
