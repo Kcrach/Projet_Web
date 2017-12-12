@@ -1,0 +1,20 @@
+DUT\Models\Item:
+  type: entity
+  table: item
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    title:
+      type: string
+      length: 50
+      column: title
+      nullable: false
+    faite:
+      type: boolean
+      column: faite
+      nullable: false
