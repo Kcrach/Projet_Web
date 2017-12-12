@@ -22,11 +22,8 @@ use Symfony\Component\Process\Process;
  */
 class UnixPipes extends AbstractPipes
 {
-    /** @var bool */
     private $ttyMode;
-    /** @var bool */
     private $ptyMode;
-    /** @var bool */
     private $disableOutput;
 
     public function __construct($ttyMode, $ptyMode, $input, $disableOutput)
@@ -120,7 +117,7 @@ class UnixPipes extends AbstractPipes
             do {
                 $data = fread($pipe, self::CHUNK_SIZE);
                 $read[$type] .= $data;
-            } while (isset($data[0]));
+            } while (isset($data[0]) && ($close || isset($data[self::CHUNK_SIZE - 1])));
 
             if (!isset($read[$type][0])) {
                 unset($read[$type]);
@@ -149,7 +146,7 @@ class UnixPipes extends AbstractPipes
      * @param Process         $process
      * @param string|resource $input
      *
-     * @return UnixPipes
+     * @return static
      */
     public static function create(Process $process, $input)
     {

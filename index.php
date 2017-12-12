@@ -18,7 +18,7 @@ $app['connection'] = [
     'dbname' => 'projet_web'
 ];
 
-//$app['doctrine_config'] = Setup::createYAMLMetadataConfiguration([__DIR__ . '/config'], true);
+$app['doctrine_config'] = Setup::createYAMLMetadataConfiguration([__DIR__ . '/config'], true);
 
 $app['em'] = function ($app) {
     return EntityManager::create($app['connection'], $app['doctrine_config']);
