@@ -1,0 +1,22 @@
+#pw.Models.User.dcm.yml
+
+pw\Models\User:
+  type: entity
+  table: utilisateur
+
+  id:
+    login:
+      type: string
+      lenght: 50
+
+
+  fields:
+    password:
+      type: string
+      lenght: 200
+      column: password
+      nullable: false
+    bloger:
+      type: integer
+      column: bloger
+      nullable: false
