@@ -10,17 +10,10 @@ class Article
 	protected $date;
 
 	public function __construct($_nom, $_description="", $_images=array()){
-		$this->nom = $nom;
+		$this->nom = $_nom;
 		$this->description = $_description;
-		foreach ($_images as $key => $value) {
-			$this->images[$key] = $value;
-		}
-	protected $desc;
-	protected $titre;
-
-	public function __construct($titre,$desc){
-		$this->titre = $titre;
-		$this->desc = $desc;
+		$this->images = $_images;
+		$this->date = date_timestamp_get();
 	}
 
 	public function getId(){
@@ -41,6 +34,8 @@ class Article
 
 	public function getDate(){
 		return $this->date;
+	}
+
 	public function getTitre(){
 		return $this->contenu;
 	}

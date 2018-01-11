@@ -5,23 +5,25 @@ pw\Models\Article:
   table: article
 
   id:
-    id_article:
+    id:
       type: integer
       generator:
         strategy: auto
 
   fields:
-    titre:
+    nom:
       type: string
-      lenght: 50
-      column: titre
+      column: nom
       nullable: false
-    desc:
+    description:
       type: string
-      lenght: 50
-      column: desc
+      column: description
       nullable: false
-    id_user:
-      type: integer
-      collumn: id_user
+    images:
+      type: string
+      collumn: images
+      nullable: false
+    date:
+      type: string
+      collumn: date
       nullable: false
