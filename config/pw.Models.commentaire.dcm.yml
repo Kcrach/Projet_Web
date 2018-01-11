@@ -16,3 +16,6 @@ pw\Models\Commentaire:
       lenght: 250
       column: contenu
       nullable: false
+    id_article:
+      type: integer
+      column: id_article

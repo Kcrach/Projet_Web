@@ -18,6 +18,10 @@ class ArticleController{
     	$em = $app['em'];
         $url = $app['url_generator']->generate('home');
 
+        $nom = $request->get('nom');
+        $descriptif = $request->get('descriptif');
+        $images = $request->get('images');
+        
         $article = new Article()
     }
 }

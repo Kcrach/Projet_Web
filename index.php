@@ -31,6 +31,8 @@ $app['session'] = new SessionStorage();
  * ROUTES
  */
 
+$session = new SessionStorage();
+
 $app->get('/', function() use ($app){
 	if(!isset($app['session']))
 		$app['session']->setConnected(false);

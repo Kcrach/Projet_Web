@@ -1,10 +1,15 @@
 <?php
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 79f8edd6ee2e839fb92d26a32bec4acbec7cae0a
 namespace pw\Models;
 
 class Article
 {
 	protected $id;
+<<<<<<< HEAD
 	protected $nom;
 	protected $description;
 	protected $images;
@@ -16,12 +21,21 @@ class Article
 		foreach ($_images as $key => $value) {
 			$this->images[$key] = $value;
 		}
+=======
+	protected $desc;
+	protected $titre;
+
+	public function __construct($titre,$desc){
+		$this->titre = $titre;
+		$this->desc = $desc;
+>>>>>>> 79f8edd6ee2e839fb92d26a32bec4acbec7cae0a
 	}
 
 	public function getId(){
 		return $this->id;
 	}
 
+<<<<<<< HEAD
 	public function getNom(){
 		return $this->nom;
 	}
@@ -36,6 +50,14 @@ class Article
 
 	public function getDate(){
 		return $this->date;
+=======
+	public function getTitre(){
+		return $this->contenu;
+	}
+
+	public function getDesc(){
+		return $this->desc;
+>>>>>>> 79f8edd6ee2e839fb92d26a32bec4acbec7cae0a
 	}
 }
 
