@@ -22,7 +22,7 @@ class ArticleController{
         $descriptif = $request->get('descriptif');
         $images = $request->get('images');
         
-        $article = new Article()
+        $article = new Article($nom, $descriptif, $images);
     }
 }
 ?>
