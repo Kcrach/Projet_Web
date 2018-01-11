@@ -1,0 +1,29 @@
+#pw.Models.Commentaire.dcm.yml
+
+pw\Models\Commentaire:
+  type: entity
+  table: commentaire
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    nom:
+      type: string
+      column: nom
+      nullable: false
+    description:
+      type: string
+      column: description
+      nullable: false
+    images:
+      type: string
+      column: images
+      nullable: false
+    date:
+      type: date
+      column: date
+      nullable: false

@@ -45,5 +45,7 @@ $app->get('/articles', function() use ($app){
 	return $app['twig']->render('articles.html', ['session' => $app['session']]);
 });
 
+$app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle')
+
 $app['debug'] = true;
 $app->run();
