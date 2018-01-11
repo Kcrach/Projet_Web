@@ -5,6 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use pw\Services\SessionStorage;
+use pw\Controllers\UserController;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
@@ -24,6 +25,8 @@ $app['em'] = function ($app) {
 	return EntityManager::create($app['connection'], $app['doctrine_config']);
 };
 
+$app['session'] = new SessionStorage();
+
 /**
  * ROUTES
  */
@@ -31,9 +34,18 @@ $app['em'] = function ($app) {
 $session = new SessionStorage();
 
 $app->get('/', function() use ($app){
-	$session = new SessionStorage();
-	return $app['twig']->render('index.html');
+	if(!isset($app['session']))
+		$app['session']->setConnected(false);
+	return $app['twig']->render('index.html', ['session' => $app['session']]);
 })->bind('home');
+
+$app->get('/contact', function() use ($app){
+	return $app['twig']->render('contact.html', ['session' => $app['session']]);
+});
+
+$app->get('/articles', function() use ($app){
+	return $app['twig']->render('articles.html', ['session' => $app['session']]);
+});
 
 $app['debug'] = true;
 $app->run();

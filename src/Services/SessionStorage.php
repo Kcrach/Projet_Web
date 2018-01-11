@@ -52,4 +52,28 @@ class SessionStorage
         return $_SESSION['collection'];
     }
 
+    public function setConnected($_bool){
+        $_SESSION['connected'] = $_bool;
+        return $this;
+    }
+
+    public function isConnected(){
+        if(isset($_SESSION['connected']))
+            return $_SESSION['connected'];
+        else
+            return false;
+    }
+
+    public function setBlogger($_bool){
+        $_SESSION['blogger'] = $_bool;
+        return $this;
+    }
+
+    public function isBlogger(){
+        if(isset($_SESSION['blogger']))
+            return $_SESSION['blogger'];
+        else
+            return false;
+    }
+
 }
