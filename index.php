@@ -47,5 +47,7 @@ $app->get('/articles', function() use ($app){
 	return $app['twig']->render('articles.html', ['session' => $app['session']]);
 });
 
+$app->get('/createComm','pw\\Controllers\\CommentaireControllers::createAction');
+
 $app['debug'] = true;
 $app->run();

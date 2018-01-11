@@ -16,5 +16,26 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
+    public function createAction(){
+    	$form = new Form("formComm","formComm","validerComm.php","post","multipart/form-data");
+    	$form->set_input("titleComm", "text","titleComm","Titre",true);
+    	$form->set_input("descComm", "text","descComm","Descripti (Facultatif)", false);
+    	$form->set_submit("submitComm", "submitComm" , "Valider");
+
+    	return ($form->get_form());
+    }
+
+    public function listAction(){
+
+    }
+
+    public function deleteAction(){
+
+    }
+
+    public function updateAction(){
+
+    }
+
    
 }
