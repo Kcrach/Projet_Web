@@ -18,7 +18,7 @@ class ArticleController{
     	$em = $app['em'];
         $url = $app['url_generator']->generate('home');
 
-        
+        $article = new Article()
     }
 }
 ?>
