@@ -28,8 +28,11 @@ html
 
 main
 {
+	text-align: center;
 	background-color: inherit;
 	padding:15px;
+	font-family: broffont;
+	font-size: 25px;
 }
 
 body

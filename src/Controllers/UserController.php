@@ -26,6 +26,13 @@ class UserController{
         }
         else{
         	$app['session']->setConnected(true);
+            $blogger = $request->get('bloger');
+            if($blogger == 1)
+                $app['session']->setBlogger(true);
+            else
+                $app['session']->setBlogger(false);
+
+            sleep(2);
         	return $app->redirect($url);
         }
     }
