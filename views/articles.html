@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Le Blog de Choone</title>
+	<link rel="stylesheet" type="text/css" href="{{app.request.basepath}}/style/style.css">
+</head>
+<body>
+	<header>
+		Le Blog de Choone
+	</header>
+	<nav>
+		<ul>
+			<li><a href="{{app.request.basepath}}/">Accueil</a></li>
+			<li><a href="{{app.request.basepath}}/contact">Contact</a></li>
+			<li><a href="{{app.request.basepath}}/articles">Ecrire un acticle</a></li>
+		</ul>
+	</nav>
+	<main>
+		<div id="ajoutArticle">
+			<form id="formAjoutArticle">
+				<p>Ajouter un article</p>
+				<input type="text" name="nom" placeholder="Nom d'article" required><br>
+				<textarea form="formAjoutArticle" name="descriptif" placeholder="Description" cols="40" rows="5" maxlength="200"></textarea><br>
+				<input type="file" name="images" placeholder="Ajouter des images"><br>
+				<input type="submit" name="envoyer" value="Publier">
+			</form>
+		</div>
+	</main>
+</body>
+</html>

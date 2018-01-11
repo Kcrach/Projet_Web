@@ -30,7 +30,7 @@ main
 {
 	text-align: center;
 	background-color: inherit;
-	padding:15px;
+	/*padding:15px;*/
 	font-family: broffont;
 	font-size: 25px;
 }
@@ -111,23 +111,39 @@ nav ul li a:hover
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-a#deconnexion
+#ajoutArticle
 {
-	position: relative;
-	float: right;
+	margin-top: 30px;
+	padding: 0 50px 50px 50px;
 	display: inline-block;
-	text-decoration: none;
-	color: black;
-	padding: 5px;
-	border:none;
 	background-color: #dddddd;
-	transition: 0.2s ease;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-a#deconnexion:hover
+#ajoutArticle p
 {
-	background-color:#555555;
-	color: white;
-	transition: 0.2s ease;
+	font-size: 35px;
+	padding: 0;
+}
+
+#ajoutArticle input[type="text"]
+{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#ajoutArticle input[type="submit"]
+{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	font-size: 30px;
+	font-family: broffont;
+}
+
+#ajoutArticle textarea
+{
+	font-family: calibri;
+	font-size: 18px;
+	resize: none;
 }

@@ -26,7 +26,18 @@ class CommentaireController {
     }
 
     public function listAction(){
+		$entityManager = $app['em'];
+        $repository = $entityManager->getRepository('pw\\Models\\Commentaire');
+        $html ="<li>";
+        $comm = $repository->findAll();
 
+        foreach ($comms as $comm) {
+        	$html .= "<p>".$comm->getContenu()."</p>";
+        }
+
+        $html .="</li>";
+
+        return new response($html);
     }
 
     public function deleteAction(){
