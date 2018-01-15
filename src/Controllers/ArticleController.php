@@ -11,18 +11,23 @@ class ArticleController{
 	protected $storage;
 
 	public function __construct() {
-        $this->storage = new SessionStorage();
-    }
+		$this->storage = new SessionStorage();
+	}
 
-    public function ajoutArticle(Request $request, Application $app){
-    	$em = $app['em'];
-        $url = $app['url_generator']->generate('home');
+	public function ajoutArticle(Request $request, Application $app){
+		$em = $app['em'];
+		$url = $app['url_generator']->generate('home');
 
-        $nom = $request->get('nom');
-        $descriptif = $request->get('descriptif');
-        $images = $request->get('images');
-        
-        $article = new Article()
-    }
+		$nom = $request->get('nom', null);
+		$descriptif = $request->get('descriptif', null);
+		$images = $request->get('images', null);
+
+		$article = new Article($nom, $descriptif, $images);
+
+		$em->persist($article);
+		$em->flush();
+
+		return $app->redirect($url);
+	}
 }
 ?>

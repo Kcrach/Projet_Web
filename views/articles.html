@@ -17,7 +17,7 @@
 	</nav>
 	<main>
 		<div id="ajoutArticle">
-			<form id="formAjoutArticle">
+			<form id="formAjoutArticle" method="post" action="{{app.request.basepath}}/articles">
 				<p>Ajouter un article</p>
 				<input type="text" name="nom" placeholder="Nom d'article" required><br>
 				<textarea form="formAjoutArticle" name="descriptif" placeholder="Description" cols="40" rows="5" maxlength="200"></textarea><br>

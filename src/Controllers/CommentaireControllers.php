@@ -16,7 +16,10 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
-    public function createAction(){
+    public function createAction(Application $app){
+    	$em = $app['em'];
+    	$url = $app['url_generator']->generate('home');
+
     	$form = new Form("formComm","formComm","validerComm.php","post","multipart/form-data");
     	$form->set_input("titleComm", "text","titleComm","Titre",true);
     	$form->set_input("descComm", "text","descComm","Descripti (Facultatif)", false);
@@ -25,14 +28,16 @@ class CommentaireController {
     	return ($form->get_form());
     }
 
-    public function listAction(){
+    public function listAction(Application $app){
 		$entityManager = $app['em'];
         $repository = $entityManager->getRepository('pw\\Models\\Commentaire');
         $html ="<li>";
         $comm = $repository->findAll();
 
         foreach ($comms as $comm) {
+
         	$html .= "<p>".$comm->getContenu()."</p>";
+
         }
 
         $html .="</li>";
