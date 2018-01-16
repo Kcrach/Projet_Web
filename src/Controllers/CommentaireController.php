@@ -19,7 +19,6 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
-<<<<<<< HEAD:src/Controllers/CommentaireController.php
     public function createCommentaire(Request $request, Application $app){
         $em = $app['em'];
         $url = $app['url_generator']->generate('home');
@@ -33,7 +32,7 @@ class CommentaireController {
         $em->flush();
 
         return $app->redirect($url);
-=======
+
     public function createCommAction(Application $app){
     	$sqlServices = new SQLServices($app);
 
@@ -41,7 +40,6 @@ class CommentaireController {
             $_SESSION['user']['username'], $_POST["content"], $formattedDate));
         
         return new RedirectResponse($app["url_generator"]->generate("{idArticle}", ["idArticle" => $_POST["postID"]]));
->>>>>>> 2da709a27aef9d19a3534fdfe3fcacccca3a93f1:src/Controllers/CommentaireControllers.php
     }
 
     public function listCommentaire(Application $app){
