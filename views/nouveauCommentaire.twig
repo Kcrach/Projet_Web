@@ -1,0 +1,9 @@
+<div class="commentary">
+    <div class="commentary-header">
+        Ajouter un commentaire :
+        <form action="{{ app.url_generator.generate("addCommentary") }}" method="POST" class="commentary-form">
+            <textarea name="contenu" title="contenu" placeholder="Commentaire" rows="4"></textarea>
+            <input type="number" name="idArticle" title="idArticle" value="{{ post.getIdArticle() }}" hidden>
+            <input type="submit" name="submit">
+    </form>
+</div>

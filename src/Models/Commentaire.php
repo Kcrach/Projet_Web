@@ -26,5 +26,4 @@ class Commentaire
 		return $this->idArticle;
 	}
 }
-
 ?>
