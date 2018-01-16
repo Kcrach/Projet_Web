@@ -16,30 +16,32 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
-    public function createAction(Application $app){
-    	$sqlServices = new SQLServices($app);
+    public function createCommentaire(Request $request, Application $app){
+        $em = $app['em'];
+        $url = $app['url_generator']->generate('home');
 
-        $sqlServices->addCommentary(new Commentary($_POST["postID"], null,
-            $_SESSION['user']['username'], $_POST["content"], $formattedDate));
-        
-        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $_POST["postID"]]));
+        $contenu = $request->get('nom', null);
+        $idArticle = $request->get('idArticle', null);
+
+        $com = new Commentaire($contenu, $idArticle);
+
+        $em->persist($com);
+        $em->flush();
+
+        return $app->redirect($url);
     }
 
-    public function listAction(Application $app){
+    public function listCommentaire(Application $app){
 		$entityManager = $app['em'];
         $repository = $entityManager->getRepository('pw\\Models\\Commentaire');
-        $html ="<li>";
+        $retour = array();
         $comm = $repository->findAll();
 
-        foreach ($comms as $comm) {
-
-        	$html .= "<p>".$comm->getContenu()."</p>";
-
+        foreach ($comm as $key => $value) {
+            array_push($retour, $value);
         }
 
-        $html .="</li>";
-
-        return new response($html);
+        return $retour;
     }
 
     public function deleteAction(){
