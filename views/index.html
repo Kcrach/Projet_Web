@@ -31,7 +31,11 @@
 					{% endif %}
 				{% endfor %}
 				<div id="ajoutCommentaire">
+<<<<<<< HEAD
+					<form action="ajoutCommentaire" method="post">
+=======
 					<form action="{{ app.request.basepath }}/ajoutCommentaire" method="post">
+>>>>>>> abe6e1932ff290504b71c427269db0942e01316f
 						<input type="text" name="contenu" placeholder="Ajouter un commentaire..." required>
 						<input type="hidden" name="idArticle" value="{{ article.getId }}">
 						<input type="submit" name="envoyer" value="Envoyer">

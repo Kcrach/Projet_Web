@@ -7,10 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Controllers;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\RedirectResponse;
+=======
+>>>>>>> 5037b7575a0dd4afb5b5299f8f461857b59280ad
 use pw\Models\Commentaire;
 
-class CommentaireController {
+class CommentaireControllers {
 
     protected $storage;
 

@@ -50,11 +50,15 @@ $app->get('/articles', function() use ($app){
 	return $app['twig']->render('articles.html', ['session' => $app['session']]);
 });
 
-$app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
+$app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
-$app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
+$app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
+<<<<<<< HEAD
 $app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireController::createCommentaire');
+=======
+$app->post('/ajoutCommentaire','pw\\Controllers\\CommentaireControllers::createCommAction');
+>>>>>>> 5037b7575a0dd4afb5b5299f8f461857b59280ad
 
 $app['debug'] = true;
 $app->run();
