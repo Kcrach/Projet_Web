@@ -17,15 +17,12 @@ class CommentaireController {
     }
 
     public function createAction(Application $app){
-    	$em = $app['em'];
-    	$url = $app['url_generator']->generate('home');
+    	$sqlServices = new SQLServices($app);
 
-    	$form = new Form("formComm","formComm","validerComm.php","post","multipart/form-data");
-    	$form->set_input("titleComm", "text","titleComm","Titre",true);
-    	$form->set_input("descComm", "text","descComm","Descripti (Facultatif)", false);
-    	$form->set_submit("submitComm", "submitComm" , "Valider");
-
-    	return ($form->get_form());
+        $sqlServices->addCommentary(new Commentary($_POST["postID"], null,
+            $_SESSION['user']['username'], $_POST["content"], $formattedDate));
+        
+        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $_POST["postID"]]));
     }
 
     public function listAction(Application $app){
