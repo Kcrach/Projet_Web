@@ -17,6 +17,19 @@
 	</nav>
 	<main>
 		<p>Page d'accueil</p>
+		{% for article in articles %}
+			<div class="article">
+				<div id="nom">{{article.getNom()}}</div>
+				<div id="date">{{article.getDate}}</div>
+				<div id="description">{{article.getDescription()}}</div>
+				<div id="ajoutCommentaire">
+					<form action="/ajoutCommentaire" method="post">
+						<input type="text" name="contenu" placeholder="Ajouter un commentaire..." required>
+						<input type="submit" name="envoyer" value="Envoyer">
+					</form>
+				</div>
+			</div>
+		{% endfor %}
 	</main>
 </body>
 </html>

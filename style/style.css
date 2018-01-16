@@ -147,3 +147,27 @@ nav ul li a:hover
 	font-size: 18px;
 	resize: none;
 }
+
+.article
+{
+	margin: 20px;
+	background-color: #eeeeee;
+	padding: 10px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.article #nom
+{
+	font-family: silent reaction;
+}
+
+.article #date
+{
+	font-family: calibri;
+	font-size: 12px;
+}
+
+.article #description
+{
+	margin-top: 5px;
+}

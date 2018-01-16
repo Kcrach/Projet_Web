@@ -20,14 +20,32 @@ class ArticleController{
 
 		$nom = $request->get('nom', null);
 		$descriptif = $request->get('descriptif', null);
-		$images = $request->get('images', null);
+		$image = $request->files->get('images');
+		$nomImage="";
+		if(!is_null($image)){
+			$image->move("C:\\xampp\\htdocs\\Projet_Web\\images",$nom . '.PNG');
+			$nomImage = $image->getClientOriginalName();
+		}
 
-		$article = new Article($nom, $descriptif, $images);
+		$article = new Article($nom, $descriptif, $nomImage);
 
 		$em->persist($article);
 		$em->flush();
 
 		return $app->redirect($url);
+	}
+
+	public function listArticle(Application $app){
+		$em = $app['em'];
+        $repository = $em->getRepository('pw\\Models\\Article');
+        $result = $repository->findBy(array(), array('id' => 'DESC'));
+        $retour = array();
+
+        foreach ($result as $key => $value) {
+            array_push($retour, $value);
+        }
+
+        return $retour;
 	}
 }
 ?>
