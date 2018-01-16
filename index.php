@@ -6,6 +6,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use pw\Services\SessionStorage;
 use pw\Controllers\ArticleController;
+use pw\Controllers\CommentaireController;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
@@ -37,7 +38,8 @@ $app->get('/', function() use ($app){
 	if(!isset($app['session']))
 		$app['session']->setConnected(false);
 	$ac = new ArticleController();
-	return $app['twig']->render('index.html', ['session' => $app['session'], 'articles' => $ac->listArticle($app)]);
+	$cc = new CommentaireController();
+	return $app['twig']->render('index.html', ['session' => $app['session'], 'articles' => $ac->listArticle($app), 'commentaires' => $cc->listCommentaire($app)]);
 })->bind('home');
 
 $app->get('/contact', function() use ($app){
