@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Controllers;
+use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use pw\Models\Commentaire;
 
 class CommentaireController {
 
@@ -16,13 +19,13 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
-    public function createAction(Application $app){
+    public function createCommAction(Application $app){
     	$sqlServices = new SQLServices($app);
 
-        $sqlServices->addCommentary(new Commentary($_POST["postID"], null,
+        $sqlServices->addComm(new Commentaire($_POST["postID"], null,
             $_SESSION['user']['username'], $_POST["content"], $formattedDate));
         
-        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $_POST["postID"]]));
+        return new RedirectResponse($app["url_generator"]->generate("{idArticle}", ["idArticle" => $_POST["postID"]]));
     }
 
     public function listAction(Application $app){
@@ -42,8 +45,12 @@ class CommentaireController {
         return new response($html);
     }
 
-    public function deleteAction(){
+    public function deleteCommAction(){
+        $sqlServices = new SQLServices($app);
 
+        $sqlServices->removeCommentary($idArticle, $id);
+
+        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $idPost]));
     }
 
     public function updateAction(){

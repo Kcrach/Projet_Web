@@ -25,5 +25,9 @@ class Commentaire
 	public function getIdArticle(){
 		return $this->idArticle;
 	}
+
+	public function setCommId($id){
+		 $this->id = $id;
+	}
 }
 ?>
