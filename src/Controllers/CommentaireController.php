@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Controllers;
+use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use pw\Models\Commentaire;
 
 class CommentaireController {
 
@@ -16,6 +19,7 @@ class CommentaireController {
         $this->storage = new SessionStorage();
     }
 
+<<<<<<< HEAD:src/Controllers/CommentaireController.php
     public function createCommentaire(Request $request, Application $app){
         $em = $app['em'];
         $url = $app['url_generator']->generate('home');
@@ -29,6 +33,15 @@ class CommentaireController {
         $em->flush();
 
         return $app->redirect($url);
+=======
+    public function createCommAction(Application $app){
+    	$sqlServices = new SQLServices($app);
+
+        $sqlServices->addComm(new Commentaire($_POST["postID"], null,
+            $_SESSION['user']['username'], $_POST["content"], $formattedDate));
+        
+        return new RedirectResponse($app["url_generator"]->generate("{idArticle}", ["idArticle" => $_POST["postID"]]));
+>>>>>>> 2da709a27aef9d19a3534fdfe3fcacccca3a93f1:src/Controllers/CommentaireControllers.php
     }
 
     public function listCommentaire(Application $app){
@@ -44,8 +57,12 @@ class CommentaireController {
         return $retour;
     }
 
-    public function deleteAction(){
+    public function deleteCommAction(){
+        $sqlServices = new SQLServices($app);
 
+        $sqlServices->removeCommentary($idArticle, $id);
+
+        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $idPost]));
     }
 
     public function updateAction(){
