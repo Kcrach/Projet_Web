@@ -7,11 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Controllers;
-use Symfony\Component\BrowserKit\Response;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use pw\Models\Commentaire;
 
-class CommentaireController {
+class CommentaireControllers {
 
     protected $storage;
 

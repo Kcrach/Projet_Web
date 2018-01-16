@@ -48,11 +48,11 @@ $app->get('/articles', function() use ($app){
 	return $app['twig']->render('articles.html', ['session' => $app['session']]);
 });
 
-$app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
+$app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
-$app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
+$app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
-$app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireControllers::createCommAction');
+$app->post('/ajoutCommentaire','pw\\Controllers\\CommentaireControllers::createCommAction');
 
 $app['debug'] = true;
 $app->run();
