@@ -33,6 +33,8 @@ class CommentaireController {
 
         return $app->redirect($url);
 
+    }
+
     public function createCommAction(Application $app){
     	$sqlServices = new SQLServices($app);
 
