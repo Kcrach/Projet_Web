@@ -9,11 +9,11 @@ class Article
 	protected $images;
 	protected $date;
 
-	public function __construct($_nom, $_description="", $_images=array()){
+	public function __construct($_nom, $_description="", $_images=""){
 		$this->nom = $_nom;
 		$this->description = $_description;
 		$this->images = $_images;
-		$this->date = date_timestamp_get();
+		$this->date = date("Y-m-d H:i:s");
 	}
 
 	public function getId(){
@@ -34,14 +34,6 @@ class Article
 
 	public function getDate(){
 		return $this->date;
-	}
-
-	public function getTitre(){
-		return $this->contenu;
-	}
-
-	public function getDesc(){
-		return $this->desc;
 	}
 }
 

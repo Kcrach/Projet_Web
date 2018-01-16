@@ -5,7 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use pw\Services\SessionStorage;
-use pw\Controllers\UserController;
+use pw\Controllers\ArticleController;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
@@ -36,7 +36,8 @@ $session = new SessionStorage();
 $app->get('/', function() use ($app){
 	if(!isset($app['session']))
 		$app['session']->setConnected(false);
-	return $app['twig']->render('index.html', ['session' => $app['session']]);
+	$ac = new ArticleController();
+	return $app['twig']->render('index.html', ['session' => $app['session'], 'articles' => $ac->listArticle($app)]);
 })->bind('home');
 
 $app->get('/contact', function() use ($app){
@@ -48,6 +49,8 @@ $app->get('/articles', function() use ($app){
 });
 
 $app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
+
+$app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireController::ajoutCommentaire');
 
 $app['debug'] = true;
 $app->run();
