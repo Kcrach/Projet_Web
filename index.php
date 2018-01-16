@@ -54,7 +54,7 @@ $app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
 
 $app->post('/articles', 'pw\\Controllers\\ArticleController::ajoutArticle');
 
-$app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireControllers::createCommAction');
+$app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireController::createCommentaire');
 
 $app['debug'] = true;
 $app->run();

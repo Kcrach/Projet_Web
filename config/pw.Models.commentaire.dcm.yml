@@ -5,7 +5,7 @@ pw\Models\Commentaire:
   table: commentaire
 
   id:
-    id_commentaire:
+    id:
       type: integer
       generator:
         strategy: auto
@@ -13,9 +13,8 @@ pw\Models\Commentaire:
   fields:
     contenu:
       type: string
-      lenght: 250
       column: contenu
       nullable: false
-    id_article:
+    idArticle:
       type: integer
-      column: id_article
+      column: idarticle

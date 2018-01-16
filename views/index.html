@@ -18,12 +18,22 @@
 	<main>
 		{% for article in articles %}
 			<div class="article">
+				<a id="supprimer" href="{{app.request.basepath}}/supprimer/{{article.getId}}">X</a>
 				<div id="nom">{{article.getNom()}}</div>
 				<div id="date">{{article.getDate}}</div>
 				<div id="description">{{article.getDescription()}}</div>
+				{% if article.getImages != NULL %}
+					<img src="{{app.request.basepath}}/images/{{article.getNom}}.PNG">
+				{% endif %}
+				{% for com in commentaires %}
+					{% if com.getIdArticle==article.getId %}
+						<div class="commentaire">{{com.getContenu}}</div>
+					{% endif %}
+				{% endfor %}
 				<div id="ajoutCommentaire">
 					<form action="{{ app.request.basepath }}/ajoutCommentaire" method="post">
 						<input type="text" name="contenu" placeholder="Ajouter un commentaire..." required>
+						<input type="hidden" name="idArticle" value="{{ article.getId }}">
 						<input type="submit" name="envoyer" value="Envoyer">
 					</form>
 				</div>

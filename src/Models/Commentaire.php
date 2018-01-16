@@ -8,9 +8,8 @@ class Commentaire
 	protected $id;
 	protected $contenu;
 
-	public function __construct($contenu,$id,$idArticle){
+	public function __construct($contenu,$idArticle){
 		$this->contenu = $contenu;
-		$this->id=$id;
 		$this->idArticle = $idArticle;
 	}
 
