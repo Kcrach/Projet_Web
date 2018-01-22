@@ -12,14 +12,14 @@
 		<ul>
 			<li><a href="{{app.request.basepath}}/">Accueil</a></li>
 			<li><a href="{{app.request.basepath}}/contact">Contact</a></li>
-			<li><a href="{{app.request.basepath}}/articles">Ecrire un acticle</a></li>
+			<li><a href="{{app.request.basepath}}/articles">Ecrire un article</a></li>
 		</ul>
 	</nav>
 	<main>
 		<div id="ajoutArticle">
 			<form id="formAjoutArticle" method="post" enctype="multipart/form-data" action="{{app.request.basepath}}/articles">
 				<p>Ajouter un article</p>
-				<input type="text" name="nom" placeholder="Nom d'article" required><br>
+				<input type="text" name="nom" placeholder="Nom d'article" maxlength="20" size="20" required><br>
 				<textarea form="formAjoutArticle" name="descriptif" placeholder="Description" cols="40" rows="5" maxlength="200"></textarea><br>
 				<input type="file" name="images" accept="image/*"><br>
 				<input type="submit" name="envoyer" value="Publier">

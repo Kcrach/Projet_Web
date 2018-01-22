@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Article;
+use pw\Controllers\CommentaireController;
 
 class ArticleController{
 	protected $storage;
@@ -46,6 +47,25 @@ class ArticleController{
         }
 
         return $retour;
+	}
+
+	public function deleteArticle($id, Application $app){
+		$em = $app['em'];
+		
+        $cc = new CommentaireController();
+        $cc->deleteCommentaireArticle($app, $id);
+
+        $itemToRemove = $em->find('pw\\Models\\Article',$id);
+        var_dump($itemToRemove);
+        if($itemToRemove->getImages() != "")
+        	unlink('C:\\xampp\\htdocs\\Projet_Web\\images\\' . $itemToRemove->getNom() . '.PNG');
+        $em->remove($itemToRemove);
+        $em->flush();
+
+
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);
 	}
 }
 ?>

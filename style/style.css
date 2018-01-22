@@ -37,6 +37,7 @@ main
 
 body
 {
+	text-align: center;
 	background-color: inherit;
 	height:inherit;
 	margin: 0;
@@ -50,7 +51,7 @@ header
 	background-color: #fefefe;
 	text-align: center;
 	font-family:silent reaction;
-	font-size: 50px;
+	font-size: 70px;
 	padding-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -150,15 +151,19 @@ nav ul li a:hover
 
 .article
 {
-	margin: 20px;
+	border-radius: 10px;
+	margin: 5%;
 	background-color: #eeeeee;
 	padding: 10px;
+	width: 90%;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .article #nom
 {
+	font-size: 40px;
 	font-family: silent reaction;
+	position: static;
 }
 
 .article #date
@@ -174,5 +179,110 @@ nav ul li a:hover
 
 .article #supprimer
 {
+	position: sticky;
+	float: right;
 	font-family: calibri;
+	text-decoration: none;
+	color: gray;
+	margin-left: -20px;
+	border-radius: 10px;
+	padding: 0px 10px 0px 10px;
+	transition: 0.2s ease;
+}
+
+.article #supprimer:hover
+{
+	position: relative;
+	background-color: red;
+	color:white;
+	transition: 0.2s ease;
+}
+
+.article #image
+{
+	max-width: 80%;
+	max-height: 600px;
+}
+
+.article .commentaire
+{
+	text-align: left;
+}
+
+.commentaire #textCom
+{
+	width: 80%;
+	height: 30px;
+	border:0px;
+	border-radius: 10px;
+	padding-left: 10px;
+	transition: 0.2s ease;
+}
+
+.commentaire #textCom:hover, #textCom:focus
+{
+	transition: 0.2s ease;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.commentaire #ajoutCom
+{
+	width: 15%;
+	height: 30px;
+	background-color: #dddddd;
+	color: black;
+	text-decoration: none;
+	border:none;
+	border-radius: 10px;
+	transition: 0.2s ease;
+}
+
+.commentaire #ajoutCom:hover
+{
+	background-color:#555555;
+	color: white;
+	transition: 0.2s ease;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.commentaire #supprimerCom
+{
+	position: sticky;
+	float: left;
+	font-family: calibri;
+	text-decoration: none;
+	color: gray;
+	margin-right: 20px;
+	border-radius: 10px;
+	padding: 0px 10px 0px 10px;
+	transition: 0.2s ease;
+}
+
+.commentaire #supprimerCom:hover
+{
+	position: relative;
+	background-color: red;
+	color:white;
+	transition: 0.2s ease;
+}
+
+.textCommentaire
+{
+	display: table;
+	border:none;
+	background-color: lightgray;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: auto;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-left: 10px;
+	border-radius: 10px;
+	transition: 0.2s ease;
+}
+
+.textCommentaire:hover
+{
+	transition: 0.2s ease;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

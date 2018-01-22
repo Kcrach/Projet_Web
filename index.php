@@ -54,11 +54,13 @@ $app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
 $app->post('/articles','pw\\Controllers\\ArticleController::ajoutArticle');
 
-<<<<<<< HEAD
 $app->post('/ajoutCommentaire', 'pw\\Controllers\\CommentaireController::createCommentaire');
-=======
+
 $app->post('/ajoutCommentaire','pw\\Controllers\\CommentaireControllers::createCommAction');
->>>>>>> 5037b7575a0dd4afb5b5299f8f461857b59280ad
+
+$app->get('/supprimer/{id}','pw\\Controllers\\ArticleController::deleteArticle');
+
+$app->get('/supprimerCom/{id}','pw\\Controllers\\CommentaireController::deleteCommentaire');
 
 $app['debug'] = true;
 $app->run();

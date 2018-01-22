@@ -7,13 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use pw\Services\SessionStorage;
 use pw\Models\Controllers;
-<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\RedirectResponse;
-=======
->>>>>>> 5037b7575a0dd4afb5b5299f8f461857b59280ad
 use pw\Models\Commentaire;
 
-class CommentaireControllers {
+class CommentaireController {
 
     protected $storage;
 
@@ -50,16 +47,33 @@ class CommentaireControllers {
         return $retour;
     }
 
-    public function deleteCommAction(){
-        $sqlServices = new SQLServices($app);
+    public function deleteCommentaireArticle(Application $app, $idArticle){
+        $em = $app['em'];
+        $repository = $em->getRepository('pw\\Models\\Commentaire');
+        $itemToRemove = $repository->findBy(array('idArticle' => $idArticle));
 
-        $sqlServices->removeCommentary($idArticle, $id);
+        foreach ($itemToRemove as $item) {
+            $em->remove($item);
+        }
 
-        return new RedirectResponse($app["url_generator"]->generate("{idPost}", ["idPost" => $idPost]));
+        $em->flush();
+
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);   
     }
 
-    public function updateAction(){
+    public function deleteCommentaire(Application $app, $id){
+        $em = $app['em'];
 
+        $itemToRemove = $em->find('pw\\Models\\Commentaire',$id);
+        $em->remove($itemToRemove);
+        $em->flush();
+
+
+        $url = $app['url_generator']->generate('home');
+
+        return $app->redirect($url);
     }
 
    
